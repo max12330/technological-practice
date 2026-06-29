@@ -1,0 +1,4 @@
+\babel@toc {russian}{}\relax 
+\contentsline {section}{\cyrillictext \CYRV \CYRV \CYRE \CYRD \CYRE \CYRN \CYRI \CYRE }{4}{section*.1}%
+\contentsline {section}{\numberline {1}Первая глава}{5}{section.1}%
+\contentsfinish 
