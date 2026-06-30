@@ -53,7 +53,7 @@
 
 %Тема работы
 
-\title{Моделирование случайных величин. Вариант 8}
+\title{Моделирование случайных величин. Вариант 7}
 
 % Курс
 \course{2}
@@ -156,19 +156,19 @@
 \section{Стандартный метод моделирования дискретных случайных величин}
 
 \[
-	P(\xi = k) = \frac{ 0\,5 (e^{-\lambda} \lambda^k + e^{-\mu} \mu^k)}{k!}, \quad k \geq 0, \lambda > 0, \mu > 0.
+	P(\xi = k) = \frac{\sqrt{k+1} - \sqrt{k}}{\sqrt{m}}, \quad 0 \leq k \leq m-1,
 \]
 \[
-	F_\xi(k) = \frac{Cx}{x+1}, \quad x \in [0, 1].
+	F_\xi(k) = C(1-\cos(x)), \quad x \in \left[0, \frac{\pi}{4}\right].
 \]
 
 \section{Моделирование непрерывной случайной величины. Метод обратных функций}
 
 \[
-	P(\xi = k) = \frac{ 0\,5 (e^{-\lambda} \lambda^k + e^{-\mu} \mu^k)}{k!}, \quad k \geq 0, \lambda > 0, \mu > 0.
+	P(\xi = k) = \frac{\sqrt{k+1} - \sqrt{k}}{\sqrt{m}}, \quad 0 \leq k \leq m-1,
 \]
 \[
-	F_\xi(k) = \frac{Cx}{x+1}, \quad x \in [0, 1].
+	F_\xi(k) = C(1-\cos(x)), \quad x \in \left[0, \frac{\pi}{4}\right].
 \]
 
 
@@ -176,8 +176,8 @@
 
 \[
 \begin{cases}
-    C(x+y)^2, \quad x,y \in [0, 1] \times [0, 1] \\
-	0, \quad x,y \notin [0, 1] \times [0, 1]
+    \displaystyle\frac{C}{x+y}, \quad x,y \in [1, 2] \times [1, 2] \\
+	0, \quad x,y \notin [1, 2] \times [1, 2]
 \end{cases}
 \]
 
