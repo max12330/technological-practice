@@ -1,4 +1,6 @@
 \babel@toc {russian}{}\relax 
 \contentsline {section}{\cyrillictext \CYRV \CYRV \CYRE \CYRD \CYRE \CYRN \CYRI \CYRE }{4}{section*.1}%
-\contentsline {section}{\numberline {1}Первая глава}{5}{section.1}%
+\contentsline {section}{\numberline {1}Стандартный метод моделирования дискретных случайных величин}{5}{section.1}%
+\contentsline {section}{\numberline {2}Моделирование непрерывной случайной величины. Метод обратных функций}{6}{section.2}%
+\contentsline {section}{\numberline {3}Моделирование случайных векторов}{7}{section.3}%
 \contentsfinish 
