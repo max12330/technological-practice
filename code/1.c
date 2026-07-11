@@ -34,45 +34,25 @@ int main() {
         printf("P(%d) = %f\n", k, probabilities[k]);
     }
 
+    //массив частичных сумм вероятностей
+    double *cumulative_probabilities = (double *)malloc(m * sizeof(double));
+    cumulative_probabilities[0] = probabilities[0];
+    for (int k = 1; k < m; k++) {
+        cumulative_probabilities[k] = cumulative_probabilities[k-1] + probabilities[k];
+    }
+
     srand(time(NULL));
 
     //генерация выборки
     for (int i = 0; i < N; i++) {
-        float rnd = (float)rand()/RAND_MAX;
+        double rnd = (double)rand() / RAND_MAX;
 
-        if (rnd < probabilities[0]) {
-            sample[i] = 0;
+        int k = 0;
+        while (rnd >= cumulative_probabilities[k]) {
+            k++;
         }
-        else if (rnd < probabilities[0] + probabilities[1]) {
-            sample[i] = 1;
-        }
-        else if (rnd < probabilities[0] + probabilities[1] + probabilities[2]) {
-            sample[i] = 2;
-        }
-        else if (rnd < probabilities[0] + probabilities[1] + probabilities[2] + 
-            probabilities[3]) {
-            sample[i] = 3;
-        }
-        else if (rnd < probabilities[0] + probabilities[1] + probabilities[2] + 
-            probabilities[3] + probabilities[4]) {
-            sample[i] = 4;
-        }
-        else if (rnd < probabilities[0] + probabilities[1] + probabilities[2] + 
-            probabilities[3] + probabilities[4] + probabilities[5]) {
-            sample[i] = 5;
-        }
-        else {
-            sample[i] = 6;
-        }
+        sample[i] = k;
     }
-
-    /*
-    //вывод выборки
-    for (int i = 0; i < N; i++) {
-        printf("%d ", sample[i]);
-    }
-    printf("\n");
-    */
 
     //количество каждого значения в выборке
     int *counts = (int *)calloc(m, sizeof(int));
@@ -118,6 +98,7 @@ int main() {
     //освобождение памяти
     free(sample);
     free(probabilities);
+    free(cumulative_probabilities);
     free(counts);
 
     return 0;
