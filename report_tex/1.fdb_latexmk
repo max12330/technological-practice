@@ -1,9 +1,9 @@
 # Fdb version 4
-["pdflatex"] 1784307292.15106 "d:/Максим/Обучение/СГУ/Практики+курсовая/Мех-мат/практика после 2 курса/report_tex/1.tex" "1.pdf" "1" 1784307293.64482 0
-  "1.aux" 1784307293 1020 c06f01fd9dbce2390b35fbb2772af3e4 "pdflatex"
-  "1.out" 1784307293 1514 62fa49c3764ab7eb7b1a5047b67f88d4 "pdflatex"
-  "1.tex" 1784307291 9508 e3f118322a4a5aab6fde8657625cba79 ""
-  "1.toc" 1784307293 625 e9a6f5019642a33409feeb254c1a7359 "pdflatex"
+["pdflatex"] 1784381233.21264 "d:/Максим/Обучение/СГУ/Практики+курсовая/Мех-мат/практика после 2 курса/report_tex/1.tex" "1.pdf" "1" 1784381234.7401 0
+  "1.aux" 1784381234 1297 7c2c85cfbd157c8169d7791fe02151af "pdflatex"
+  "1.out" 1784381234 1884 f6225c6614410f11bb7def2f0ceafb09 "pdflatex"
+  "1.tex" 1784381232 12120 500e5c37659b00209aafc2418d2d2a92 ""
+  "1.toc" 1784381234 820 6c463367dfbd50ad196e7939bbb2982c "pdflatex"
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1233951854 916 f87d7c45f9c908e672703b83b72241a3 ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/symbols/msam7.tfm" 1233951854 928 2dc8d444221b7a635bb58038579b861a ""
@@ -16,9 +16,12 @@
   "C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb" 1247596667 30251 6afa5cb1d0204815a708a080681d4674 ""
   "C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1247596667 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
   "C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb" 1247596667 36741 0ee9e374ec3e30da87cdfb0ea3575226 ""
+  "C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb" 1247596667 36281 c355509802a035cadc5f15869451dcee ""
   "C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1247596667 35752 024fb6c41858982481f6968b5fc26508 ""
   "C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1247596667 32722 d7379af29a190c3f453aba36302ff5a9 ""
+  "C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1247596667 32762 7fee39e011c23b3589931effd97b9702 ""
   "C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1247596667 32569 5e5ddc8df908dea60932f3c484a54c0d ""
+  "C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1247596673 34694 870c211f62cb72718a00e353f14f254d ""
   "C:/Program Files/MiKTeX/tex/context/base/mkii/supp-pdf.mkii" 1580390158 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "C:/Program Files/MiKTeX/tex/generic/atbegshi/atbegshi.sty" 1575571100 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
   "C:/Program Files/MiKTeX/tex/generic/babel/babel.sty" 1704647332 150008 7a05b0fdc0167c04e192003e780ab195 ""
@@ -119,7 +122,7 @@
   "C:/Users/chesm/AppData/Local/MiKTeX/fonts/tfm/lh/lh-t2a/larm1440.tfm" 1747481230 3256 3daaa33cf35cf3f354983aa3214ecd7f ""
   "C:/Users/chesm/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1747480801 24215231 338f1eb12dcd1bbf9c53ff7a26820d96 ""
   "SCWorks.cls" 1782752280 33560 749cb579becc4dcb08ed77e7262fc75d ""
-  "d:/Максим/Обучение/СГУ/Практики+курсовая/Мех-мат/практика после 2 курса/report_tex/1.tex" 1784307291 9508 e3f118322a4a5aab6fde8657625cba79 ""
+  "d:/Максим/Обучение/СГУ/Практики+курсовая/Мех-мат/практика после 2 курса/report_tex/1.tex" 1784381232 12120 500e5c37659b00209aafc2418d2d2a92 ""
   (generated)
   "1.aux"
   "1.log"

@@ -181,6 +181,100 @@ C = \frac{1}{1-\cos\left(\frac{\pi}{4}\right)} = 2 + \sqrt{2}
 \[
 F_\xi(x) = (2 + \sqrt{2})(1 - \cos(x)), \quad x \in \left[0, \frac{\pi}{4}\right]
 \]
+Обратная функция:
+\[
+F_\xi^{-1}(y) = \arccos\left(1 - \frac{y}{2 + \sqrt{2}}\right), \quad y \in [0, 1]
+\]
+Плотность распределения:
+\[
+f_\xi(x) = (2 + \sqrt{2}) \sin(x), \quad x \in \left[0, \frac{\pi}{4}\right]
+\]
+Математическое ожидание:
+\[
+E\xi = \int_{0}^{\frac{\pi}{4}} x f_\xi(x) dx = \int_{0}^{\frac{\pi}{4}} (2 + \sqrt{2}) x \sin(x) dx = 
+\]
+
+
+\subsection{Математическое ожидание}
+\[
+\mathbb E[\xi]=\int_0^{\pi/4} x\, f_\xi(x)\,dx
+= C\int_0^{\pi/4} x\sin x\,dx.
+\]
+Интегрируем по частям:
+\[
+\int x\sin x\,dx = -x\cos x+\sin x.
+\]
+Тогда
+\[
+\int_0^{\pi/4} x\sin x\,dx
+= \left[-x\cos x+\sin x\right]_0^{\pi/4}
+= -\frac{\pi}{4}\cdot\frac{\sqrt2}{2}+\frac{\sqrt2}{2}
+= \frac{\sqrt2}{2}\left(1-\frac{\pi}{4}\right).
+\]
+Следовательно,
+\[
+\mathbb E[\xi]
+= C\cdot \frac{\sqrt2}{2}\left(1-\frac{\pi}{4}\right)
+= (2+\sqrt2)\cdot\frac{\sqrt2}{2}\left(1-\frac{\pi}{4}\right)
+= (\sqrt2+1)\left(1-\frac{\pi}{4}\right).
+\]
+Итак,
+\[
+\mathbb E[\xi]=(\sqrt2+1)\left(1-\frac{\pi}{4}\right).
+\]
+
+\subsection{Дисперсия}
+Используем формулу:
+\[
+\mathbb D[\xi]=\mathbb E[\xi^2]-(\mathbb E[\xi])^2.
+\]
+Найдём \(\mathbb E[\xi^2]\):
+\[
+\mathbb E[\xi^2]=C\int_0^{\pi/4} x^2\sin x\,dx.
+\]
+Интегрируем по частям дважды (или используем известную первообразную):
+\[
+\int x^2\sin x\,dx = -x^2\cos x+2x\sin x+2\cos x.
+\]
+Подставляем пределы:
+\[
+\int_0^{\pi/4} x^2\sin x\,dx
+= \left[-x^2\cos x+2x\sin x+2\cos x\right]_0^{\pi/4}.
+\]
+Вычисляем:
+\[
+\begin{aligned}
+\left[-x^2\cos x+2x\sin x+2\cos x\right]_0^{\pi/4}
+&= -\frac{\pi^2}{16}\cdot\frac{\sqrt2}{2}
++2\cdot\frac{\pi}{4}\cdot\frac{\sqrt2}{2}
++2\cdot\frac{\sqrt2}{2} - (0+0+2) \\
+&= \sqrt2\left(1+\frac{\pi}{4}-\frac{\pi^2}{32}\right)-2.
+\end{aligned}
+\]
+Тогда
+\[
+\mathbb E[\xi^2]=(2+\sqrt2)\left[\sqrt2\left(1+\frac{\pi}{4}-\frac{\pi^2}{32}\right)-2\right].
+\]
+Раскроем скобки:
+\[
+\mathbb E[\xi^2]
+=2(\sqrt2+1)\left(1+\frac{\pi}{4}-\frac{\pi^2}{32}\right)-4-2\sqrt2.
+\]
+Теперь квадрат математического ожидания:
+\[
+(\mathbb E[\xi])^2=(\sqrt2+1)^2\left(1-\frac{\pi}{4}\right)^2
+= (3+2\sqrt2)\left(1-\frac{\pi}{4}\right)^2.
+\]
+Окончательно:
+\[
+\boxed{
+\mathbb D[\xi]
+=2(\sqrt2+1)\left(1+\frac{\pi}{4}-\frac{\pi^2}{32}\right)-4-2\sqrt2
+-(3+2\sqrt2)\left(1-\frac{\pi}{4}\right)^2
+}.
+\]
+
+
 
 
 \section{Моделирование случайных векторов}
