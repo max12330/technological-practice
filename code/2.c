@@ -4,7 +4,7 @@
 #include<time.h>
 #include<math.h>
 #include<locale.h>
-//программа для моделирования непрерывной случайной величины с функцией распределения F
+
 
 //функция распределения F
 double F(double x) {
@@ -36,45 +36,11 @@ int main() {
 
 
     printf("Enter N\n");
-    int N;
-    scanf("%d", &N);
-
-
-    //массив для хранения сгенерированных случайных чисел
-    double* sample = (double*)malloc(N * sizeof(double));
-    
-    //генерация выборки
-    srand(time(NULL));
-    for (int i = 0; i < N; i++) {
-        double u = (double)rand() / RAND_MAX; 
-        sample[i] = F_inv(u);
-    }
-
-/*ПРОВЕРИТЬ ВЕСЬ КОД НИЖЕ*/
-
-
-    //нахождение выборочного математического ожидания и дисперсии
-    double sample_mean = 0;
-    for (int i = 0; i < N; i++) {
-        sample_mean += sample[i];
-    }
-    sample_mean /= N;
-
-    double sample_variance = 0;
-    for (int i = 0; i < N; i++) {
-        sample_variance += (sample[i] - sample_mean) * (sample[i] - sample_mean);
-    }
-    sample_variance /= N;
-
-    printf("Sample mean: %lf\n", sample_mean);
-    printf("Sample variance: %lf\n", sample_variance);
-
-    //вывод теоретических значений
-    printf("Theoretical mean: %lf\n", theoretical_mean);
-    printf("Theoretical variance: %lf\n", theoretical_variance);
+    int N=100000;
+    //scanf("%d", &N);
 
     //проверка хи-квадрат критерия согласия
-    int k = (int)(1 + 3.322 * log10(N)); //формула Стерджеса
+    int k = (int)(1 + 3.322 * log10(N)); //формула Стёрджеса
 
     //границы интервалов
     double* boundaries = (double*)malloc((k + 1) * sizeof(double));
@@ -86,38 +52,79 @@ int main() {
 
     //подсчет частот попадания в интервалы
     int* frequencies = (int*)calloc(k, sizeof(int));
+
+    //генерация выборки
+    double sum = 0.0; //сумма для матожидания
+    double sum_sq = 0.0; //сумма квадратов для дисперсии
+
+    srand(time(NULL));
     for (int i = 0; i < N; i++) {
+        double u = (double)rand() / RAND_MAX; 
+        double x = F_inv(u);
+        sum += x;
+        sum_sq += x * x;
+        
+        //подсчет частот попадания в интервалы
+        int found = 0;
         for (int j = 0; j < k; j++) {
-            if (sample[i] >= boundaries[j] && sample[i] < boundaries[j + 1]) {
+            if (x >= boundaries[j] && x < boundaries[j + 1]) {
                 frequencies[j]++;
+                found = 1;
                 break;
             }
         }
+        if (!found) {
+            frequencies[k - 1]++;
+        }
     }
 
-    //вывод частот
-    printf("Frequencies:\n");
-    for (int i = 0; i < k; i++) {
-        printf("Interval [%lf, %lf): %d\n", boundaries[i], boundaries[i + 1], frequencies[i]);
-    }
+    //нахождение выборочных математического ожидания и дисперсии
+    double sample_mean = sum / N;
+    double sample_variance = sum_sq / N - sample_mean * sample_mean;
 
-    //вывод теоретических частот
-    printf("Theoretical frequencies:\n");
-    for (int i = 0; i < k; i++) {
-        double theoretical_frequency = N * (F(boundaries[i + 1]) - F(boundaries[i]));
-        printf("Interval [%lf, %lf): %lf\n", boundaries[i], boundaries[i + 1], theoretical_frequency);
-    }
-    //вычисление статистики хи-квадрат
+    //вывод теоретических и выборочных характеристик
+    printf("Sample mean: %lf\n", sample_mean);
+    printf("Sample variance: %lf\n", sample_variance);
+    printf("Theoretical mean: %lf\n", theoretical_mean);
+    printf("Theoretical variance: %lf\n", theoretical_variance);
+    
+    //статистика хи-квадрат
     double chi_square_statistic = 0;
+
+    //вывод частот и расчет статистики хи-квадрат
+    printf("\nIntervals, observed and expected frequencies:\n");
+    printf("Interval\t\tObserved\tExpected\n");
     for (int i = 0; i < k; i++) {
-        double diff = frequencies[i] - N * (F(boundaries[i + 1]) - F(boundaries[i]));
-        chi_square_statistic += diff * diff / (N * (F(boundaries[i + 1]) - F(boundaries[i])));
+        double expected = N * (F(boundaries[i + 1]) - F(boundaries[i]));
+        double diff = frequencies[i] - expected;
+        chi_square_statistic += diff * diff / expected;
+
+        printf("[%lf, %lf)\t%d\t\t%lf\n", boundaries[i],
+                        boundaries[i + 1], frequencies[i], expected);
     }
 
     printf("Chi-square statistic: %lf\n", chi_square_statistic);
 
+    // критические значения хи-квадрат для alpha=0.05, df=1..30
+    double critical_values[] = {
+        3.84, 5.99, 7.81, 9.49, 11.07, 12.59, 14.07, 15.51, 16.92, 18.31,
+        19.68, 21.03, 22.36, 23.68, 24.99, 26.30, 27.59, 28.87, 30.14, 31.41,
+        32.67, 33.92, 35.17, 36.42, 37.65, 38.89, 40.11, 41.34, 42.56, 43.77
+    };
+
+    int df = k - 1; // степени свободы
+    if (df < 1 || df > 30) {
+        printf("Критическое значение для степени свободы=%d не предусмотрено.\n", df);
+        return 1;
+    }
+
+    double chi_crit = critical_values[df - 1];
+    if (chi_square_statistic < chi_crit)
+        printf("Гипотеза принимается (x^2 = %.3f < %.3f)\n", chi_square_statistic, chi_crit);
+    else
+        printf("Гипотеза отвергается (x^2 = %.3f >= %.3f)\n", chi_square_statistic, chi_crit);
+
     //освобождение памяти
-    free(sample);
     free(boundaries);
     free(frequencies);
 
