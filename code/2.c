@@ -89,7 +89,7 @@ int main() {
     printf("Theoretical variance: %lf\n", theoretical_variance);
     
     //статистика хи-квадрат
-    double chi_square_statistic = 0;
+    double chi_square = 0;
 
     //вывод частот и расчет статистики хи-квадрат
     printf("\nIntervals, observed and expected frequencies:\n");
@@ -97,15 +97,15 @@ int main() {
     for (int i = 0; i < k; i++) {
         double expected = N * (F(boundaries[i + 1]) - F(boundaries[i]));
         double diff = frequencies[i] - expected;
-        chi_square_statistic += diff * diff / expected;
+        chi_square += diff * diff / expected;
 
         printf("[%lf, %lf)\t%d\t\t%lf\n", boundaries[i],
                         boundaries[i + 1], frequencies[i], expected);
     }
 
-    printf("Chi-square statistic: %lf\n", chi_square_statistic);
+    printf("Chi-square statistic: %lf\n", chi_square);
 
-    // критические значения хи-квадрат для alpha=0.05, df=1..30
+    // Критические значения хи-квадрат для alpha = 0.05 и df от 1 до 30
     double critical_values[] = {
         3.84, 5.99, 7.81, 9.49, 11.07, 12.59, 14.07, 15.51, 16.92, 18.31,
         19.68, 21.03, 22.36, 23.68, 24.99, 26.30, 27.59, 28.87, 30.14, 31.41,
@@ -119,10 +119,10 @@ int main() {
     }
 
     double chi_crit = critical_values[df - 1];
-    if (chi_square_statistic < chi_crit)
-        printf("Гипотеза принимается (x^2 = %.3f < %.3f)\n", chi_square_statistic, chi_crit);
+    if (chi_square < chi_crit)
+        printf("Гипотеза принимается (x^2 = %.3f < %.3f)\n", chi_square, chi_crit);
     else
-        printf("Гипотеза отвергается (x^2 = %.3f >= %.3f)\n", chi_square_statistic, chi_crit);
+        printf("Гипотеза отвергается (x^2 = %.3f >= %.3f)\n", chi_square, chi_crit);
 
     //освобождение памяти
     free(boundaries);

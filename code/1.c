@@ -107,14 +107,14 @@ int main() {
     //проверка гипотезы о соответствии распределения выборки
     //теоретическому распределению
     //распределение хи-квадрат
-    double chi_squared = 0;
+    double chi_square = 0;
     for (int k = 0; k < m; k++) {
         double expected_count = N * probabilities[k];
-        chi_squared += pow(counts[k] - expected_count, 2) / expected_count;
+        chi_square += pow(counts[k] - expected_count, 2) / expected_count;
     }
-    printf("Chi-squared = %f\n", chi_squared);
+    printf("Chi-squared = %f\n", chi_square);
 
-    // Критические значения для alpha = 0.05 и df от 1 до 30
+    // Критические значения хи-квадрат для alpha = 0.05 и df от 1 до 30
     double critical_values[] = {
         3.84, 5.99, 7.81, 9.49, 11.07, 12.59, 14.07, 15.51, 16.92, 18.31,
         19.68, 21.03, 22.36, 23.68, 24.99, 26.30, 27.59, 28.87, 30.14, 31.41,
@@ -128,10 +128,10 @@ int main() {
     }
 
     double chi_crit = critical_values[df - 1];
-    if (chi_squared < chi_crit)
-        printf("Гипотеза принимается (x^2 = %.3f < %.3f)\n", chi_squared, chi_crit);
+    if (chi_square < chi_crit)
+        printf("Гипотеза принимается (x^2 = %.3f < %.3f)\n", chi_square, chi_crit);
     else
-        printf("Гипотеза отвергается (x^2 = %.3f >= %.3f)\n", chi_squared, chi_crit);
+        printf("Гипотеза отвергается (x^2 = %.3f >= %.3f)\n", chi_square, chi_crit);
 
     //освобождение памяти
     //free(sample);
