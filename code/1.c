@@ -129,9 +129,9 @@ int main() {
 
     double chi_crit = critical_values[df - 1];
     if (chi_square < chi_crit)
-        printf("Гипотеза принимается (x^2 = %.3f < %.3f)\n", chi_square, chi_crit);
+        printf("Гипотеза НЕ отвергается (x^2 = %.3f < %.3f) на уровне значимости 0.05\n", chi_square, chi_crit);
     else
-        printf("Гипотеза отвергается (x^2 = %.3f >= %.3f)\n", chi_square, chi_crit);
+        printf("Гипотеза отвергается (x^2 = %.3f >= %.3f) на уровне значимости 0.05\n", chi_square, chi_crit);
 
     //освобождение памяти
     //free(sample);
