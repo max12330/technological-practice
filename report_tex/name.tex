@@ -1,0 +1,10 @@
+\usepackage{listings}
+
+begin{lstlisting}
+populity <- c(2506, 2499, 2495, 2490, 2483, 2471, 2452) #вектор с данными о численности
+years <- c(2012, 2013, 2014, 2015, 2016, 2017, 2018) #вектор с данными по годам
+Saratov <- data.frame("Годы" = years ,"Население" = populity) #объединение векторов в одну таблицу
+print(Saratov) #вывод таблицы
+plot(Saratov$Годы, Saratov$Население, main = "The Saratov region population", ylab="Population, thousand", xlab="Years") #построение точечного графика 
+lines(Saratov$Годы, Saratov$Население) #проводим линии между точками графика
+end{lstlisting}
