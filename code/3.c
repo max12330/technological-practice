@@ -5,25 +5,22 @@
 #include <time.h>
 #include <locale.h>
 
-// --- Вспомогательные функции ---
 
-// Генерация случайного числа, равномерно распределённого на [0,1]
 double rand_uniform() {
     return (double)rand() / RAND_MAX;
 }
 
-// --- Основная программа ---
 
 int main() {
-    setlocale(LC_ALL, "Russian_Russia.65001"); // для русских надписей в консоли (Windows)
+    setlocale(LC_ALL, "Russian_Russia.65001");
 
-    // 1. Константа C (нормировочный коэффициент)
+    // 1. Константа C
     double C = 1.0 / log(1024.0 / 729.0);
-    double M = C / 2.0;   // максимум плотности на [1,2]^2 достигается в точке (1,1)
+    double M = C / 2.0;
 
     // 2. Ввод объёма выборки
     int N;
-    printf("Введите количество генерируемых пар N (целое положительное): ");
+    printf("Введите количество генерируемых пар N: ");
     if (scanf("%d", &N) != 1 || N <= 0) {
         printf("Ошибка: N должно быть положительным целым числом.\n");
         return 1;
@@ -68,7 +65,8 @@ int main() {
     double sample_mean_eta = sum_eta / N;
     double sample_var_eta  = sum_eta2 / N - sample_mean_eta * sample_mean_eta;
     double sample_cov = sum_xy / N - sample_mean_xi * sample_mean_eta;
-    double sample_corr = sample_cov / (sqrt(sample_var_xi) * sqrt(sample_var_eta));
+    double sample_corr = sample_cov / 
+            (sqrt(sample_var_xi) * sqrt(sample_var_eta));
 
 
     // 7. Теоретические значения (выведены аналитически)
@@ -78,7 +76,7 @@ int main() {
     double ln2 = log(2.0);
     double ln3 = log(3.0);
     double denom = 10.0 * ln2 - 6.0 * ln3;   // = ln(1024/729)
-    double C_theor = 1.0 / denom;            // должно совпадать с C
+    double C_theor = 1.0 / denom;
 
     double theor_mean = C_theor / 2.0;
     double theor_E2 = C_theor * ( (34.0/3.0) * ln2 - 6.0 * ln3 - 0.5 );
@@ -92,7 +90,7 @@ int main() {
     printf("\n=== РЕЗУЛЬТАТЫ МОДЕЛИРОВАНИЯ ===\n");
     printf("Объём выборки N = %d\n", N);
     printf("Принято точек: %d, всего попыток: %d\n", accepted, attempts);
-    printf("Эмпирическая вероятность принятия: %.4f (теоретическая 1/M = %.4f)\n",
+    printf("Эмпир. вер-ть принятия: %.4f (теор. 1/M = %.4f)\n",
            (double)accepted / attempts, 1.0 / M);
 
     printf("\n--- Координата xi ---\n");
@@ -103,9 +101,9 @@ int main() {
 
     printf("\n--- Координата eta ---\n");
     printf("Выборочное среднее:      %12.8f\n", sample_mean_eta);
-    printf("Теоретическое среднее:   %12.8f\n", theor_mean);  // симметрия
+    printf("Теор. среднее:   %12.8f\n", theor_mean);
     printf("Выборочная дисперсия:    %12.8f\n", sample_var_eta);
-    printf("Теоретическая дисперсия: %12.8f\n", theor_var);
+    printf("Теор. дисперсия: %12.8f\n", theor_var);
 
     printf("\n--- Ковариация и корреляция ---\n");
     printf("Выборочная ковариация:      %12.8f\n", sample_cov);
