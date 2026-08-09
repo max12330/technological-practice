@@ -761,15 +761,17 @@ int main() {
 
     int df = m - 1; // степени свободы
     if (df < 1 || df > 30) {
-        printf("Критическое значение для степени свободы=%d не предусмотрено.\n", df);
+        printf("Крит. зн-е для степени свободы=%d не предусмотрено.\n", df);
         return 1;
     }
 
     double chi_crit = critical_values[df - 1];
     if (chi_square < chi_crit)
-        printf("Гипотеза НЕ отвергается (x^2 = %.3f < %.3f) на уровне значимости 0.05\n", chi_square, chi_crit);
+        printf("Гипотеза не отверг-ся (x^2 = %.3f < %.3f) на ур. зн-ти 0.05\n", 
+        chi_square, chi_crit);
     else
-        printf("Гипотеза отвергается (x^2 = %.3f >= %.3f) на уровне значимости 0.05\n", chi_square, chi_crit);
+        printf("Гипотеза отверг-ся (x^2 = %.3f >= %.3f) на ур. зн-ти 0.05\n", 
+        chi_square, chi_crit);
 
     //освобождение памяти
     //free(sample);
@@ -901,15 +903,17 @@ int main() {
 
     int df = k - 1; // степени свободы
     if (df < 1 || df > 30) {
-        printf("Критическое значение для степени свободы=%d не предусмотрено.\n", df);
+        printf("Крит. зн-е для степени свободы=%d не предусмотрено.\n", df);
         return 1;
     }
 
     double chi_crit = critical_values[df - 1];
     if (chi_square < chi_crit)
-        printf("Гипотеза НЕ отвергается (x^2 = %.3f < %.3f) на уровне значимости 0.05\n", chi_square, chi_crit);
+        printf("Гипотеза не отверг-ся (x^2 = %.3f < %.3f) на ур. зн-ти 0.05\n",
+         chi_square, chi_crit);
     else
-        printf("Гипотеза отвергается (x^2 = %.3f >= %.3f) на уровне значимости 0.05\n", chi_square, chi_crit);
+        printf("Гипотеза отверг-ся (x^2 = %.3f >= %.3f) на ур. зн-ти 0.05\n",
+         chi_square, chi_crit);
 
     //освобождение памяти
     free(boundaries);
